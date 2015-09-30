@@ -1,0 +1,152 @@
+﻿@model TestMVCSite.Models.Person
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Person</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonLastDiveDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonLastDiveDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonNumberOfDives)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonNumberOfDives)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonStreetAddress1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonStreetAddress1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonStreetAddress2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonStreetAddress2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonStateProvinceTerritory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonStateProvinceTerritory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonPostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonPostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonVegetarian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonVegetarian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonAllergies)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonAllergies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PersonPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PersonPhoto)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

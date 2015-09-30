@@ -1,0 +1,1703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AussieDiversDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Beach">
+          <Key>
+            <PropertyRef Name="BeachID" />
+          </Key>
+          <Property Name="BeachID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeachName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Boat">
+          <Key>
+            <PropertyRef Name="BoatID" />
+          </Key>
+          <Property Name="BoatID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoatName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BoatCapacity" Type="smallint" Nullable="false" />
+          <Property Name="BoatType" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BookedPackage">
+          <Key>
+            <PropertyRef Name="BookedPackageID" />
+          </Key>
+          <Property Name="BookedPackageID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="smallint" Nullable="false" />
+          <Property Name="BookingID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="BookingStatus" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BookingDetails">
+          <Key>
+            <PropertyRef Name="BookingDetailsID" />
+          </Key>
+          <Property Name="BookingDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookedPackageID" Type="smallint" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="BookedEmployeeID" Type="smallint" Nullable="false" />
+          <Property Name="BoatID" Type="smallint" Nullable="false" />
+          <Property Name="BD_DiveDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="BD_Status" Type="char" MaxLength="1" />
+          <Property Name="BD_CustomerHotel" Type="nvarchar" MaxLength="50" />
+          <Property Name="BD_PickupLocation" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="CertificationID" />
+          </Key>
+          <Property Name="CertificationID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CertificationDescription" Type="varchar" MaxLength="50" />
+          <Property Name="CertificationLevel" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommunicationHistory">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="CH_Comment" Type="varchar(max)" />
+          <Property Name="CH_Status" Type="char" MaxLength="1" />
+          <Property Name="CH_Source" Type="char" MaxLength="1" />
+          <Property Name="CH_Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="DiveHistory">
+          <Key>
+            <PropertyRef Name="DiveHistoryID" />
+          </Key>
+          <Property Name="DiveHistoryID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiveSiteID" Type="smallint" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DiveSite">
+          <Key>
+            <PropertyRef Name="DiveSiteID" />
+          </Key>
+          <Property Name="DiveSiteID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DiveSiteLocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiveSiteDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EmergencyContact">
+          <Key>
+            <PropertyRef Name="EmergencyContactID" />
+          </Key>
+          <Property Name="EmergencyContactID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="EC_FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EC_LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EC_Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="EC_PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="EC_Relationship" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeFirstName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmployeeLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmployeeInstructorType" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="EmployeeCertificationLevel" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EquipmentDescription" Type="varchar(max)" />
+          <Property Name="EquipmentRentalCost" Type="smallmoney" Nullable="false" />
+          <Property Name="EquipmentSize" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="EquipmentHistory">
+          <Key>
+            <PropertyRef Name="EquipmentHistoryID" />
+          </Key>
+          <Property Name="EquipmentHistoryID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentID" Type="smallint" Nullable="false" />
+          <Property Name="EH_RetailCost" Type="smallmoney" Nullable="false" />
+          <Property Name="EH_DatePurchased" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentID" Type="smallint" Nullable="false" />
+          <Property Name="EquipmentType" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BeachID" Type="smallint" Nullable="false" />
+          <Property Name="HotelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="HotelStreetAddress" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="HotelCity" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="HotelStateProvinceTerritory" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="HotelCountry" Type="nvarchar" MaxLength="100" />
+          <Property Name="HotelPostalCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HotelPhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HotelDirections" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PackageNumberOfDays" Type="smallint" Nullable="false" />
+          <Property Name="PackageCost" Type="smallmoney" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingID" Type="smallint" Nullable="false" />
+          <Property Name="PaymentAmount" Type="smallmoney" Nullable="false" />
+          <Property Name="PaymentBalance" Type="smallmoney" Nullable="false" />
+          <Property Name="MethodID" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="MethodID" />
+          </Key>
+          <Property Name="MethodID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PM_Name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PM_Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonFirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PersonDOB" Type="smalldatetime" Nullable="false" />
+          <Property Name="PersonLastDiveDate" Type="smalldatetime" />
+          <Property Name="PersonNumberOfDives" Type="smallint" />
+          <Property Name="PersonStreetAddress1" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="PersonStreetAddress2" Type="nvarchar" MaxLength="75" />
+          <Property Name="PersonCity" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="PersonStateProvinceTerritory" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="PersonCountry" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="PersonPostalCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PersonPhone" Type="varchar" MaxLength="20" />
+          <Property Name="PersonVegetarian" Type="char" MaxLength="1" />
+          <Property Name="PersonAllergies" Type="varchar(max)" />
+          <Property Name="PersonPhoto" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="PersonCertification">
+          <Key>
+            <PropertyRef Name="PersonCertificationID" />
+          </Key>
+          <Property Name="PersonCertificationID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="CertificationID" Type="smallint" Nullable="false" />
+          <Property Name="PC_Date" Type="smalldatetime" Nullable="false" />
+          <Property Name="PC_PADI_ID" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonHotel">
+          <Key>
+            <PropertyRef Name="PersonHotelID" />
+          </Key>
+          <Property Name="PersonHotelID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HotelID" Type="smallint" Nullable="false" />
+          <Property Name="BookingDetailsID" Type="int" Nullable="false" />
+          <Property Name="PH_RoomNumber" Type="smallint" />
+          <Property Name="PH_RoomPhone" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="RentalID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EquipmentID" Type="smallint" Nullable="false" />
+          <Property Name="BookingDetailsID" Type="int" Nullable="false" />
+          <Property Name="RentalStatus" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Aussie_Divers.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+            <PropertyRef Name="BoatID" />
+            <PropertyRef Name="DiveSiteID" />
+            <PropertyRef Name="ScheduleDayOfWeek" />
+          </Key>
+          <Property Name="ScheduleID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoatID" Type="smallint" Nullable="false" />
+          <Property Name="DiveSiteID" Type="smallint" Nullable="false" />
+          <Property Name="ScheduleDayOfWeek" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BeachID">
+          <End Role="Beach" Type="Self.Beach" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beach">
+              <PropertyRef Name="BeachID" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="BeachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BoatID_BookingDetails">
+          <End Role="Boat" Type="Self.Boat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boat">
+              <PropertyRef Name="BoatID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BoatID_Schedule">
+          <End Role="Boat" Type="Self.Boat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boat">
+              <PropertyRef Name="BoatID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="BoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookedEmployeeID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookedEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookedPackageID">
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookedPackage">
+              <PropertyRef Name="BookedPackageID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookedPackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetailsID_Hotel">
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonHotel" Type="Self.PersonHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDetails">
+              <PropertyRef Name="BookingDetailsID" />
+            </Principal>
+            <Dependent Role="PersonHotel">
+              <PropertyRef Name="BookingDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetailsID_Rental">
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDetails">
+              <PropertyRef Name="BookingDetailsID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="BookingDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingID_Package">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="BookedPackage">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingID_Payment">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationID">
+          <End Role="Certification" Type="Self.Certification" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonCertification" Type="Self.PersonCertification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certification">
+              <PropertyRef Name="CertificationID" />
+            </Principal>
+            <Dependent Role="PersonCertification">
+              <PropertyRef Name="CertificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiveSiteID_DiveHistory">
+          <End Role="DiveSite" Type="Self.DiveSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiveHistory" Type="Self.DiveHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiveSite">
+              <PropertyRef Name="DiveSiteID" />
+            </Principal>
+            <Dependent Role="DiveHistory">
+              <PropertyRef Name="DiveSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiveSiteID_Schedule">
+          <End Role="DiveSite" Type="Self.DiveSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiveSite">
+              <PropertyRef Name="DiveSiteID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DiveSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_EquipHistory">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentHistory" Type="Self.EquipmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="EquipmentHistory">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_EquipType">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="EquipmentType">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_Rental">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelID">
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonHotel" Type="Self.PersonHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="PersonHotel">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodID">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="MethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="MethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageID">
+          <End Role="Package" Type="Self.Package" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="BookedPackage">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_BookingDetails">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_Certification">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonCertification" Type="Self.PersonCertification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonCertification">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_CommHistory">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CommunicationHistory" Type="Self.CommunicationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="CommunicationHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_DiveHistory">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiveHistory" Type="Self.DiveHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="DiveHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_EmergencyContact">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmergencyContact" Type="Self.EmergencyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="EmergencyContact">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AussieDiversDataModelStoreContainer">
+          <EntitySet Name="Beach" EntityType="Self.Beach" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Boat" EntityType="Self.Boat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookedPackage" EntityType="Self.BookedPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certification" EntityType="Self.Certification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommunicationHistory" EntityType="Self.CommunicationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiveHistory" EntityType="Self.DiveHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiveSite" EntityType="Self.DiveSite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmergencyContact" EntityType="Self.EmergencyContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentHistory" EntityType="Self.EquipmentHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonCertification" EntityType="Self.PersonCertification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonHotel" EntityType="Self.PersonHotel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rental" EntityType="Self.Rental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Schedule].[ScheduleID] AS [ScheduleID], 
+    [Schedule].[BoatID] AS [BoatID], 
+    [Schedule].[DiveSiteID] AS [DiveSiteID], 
+    [Schedule].[ScheduleDayOfWeek] AS [ScheduleDayOfWeek]
+    FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BeachID" Association="Self.FK_BeachID">
+            <End Role="Beach" EntitySet="Beach" />
+            <End Role="Hotel" EntitySet="Hotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BoatID_BookingDetails" Association="Self.FK_BoatID_BookingDetails">
+            <End Role="Boat" EntitySet="Boat" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BoatID_Schedule" Association="Self.FK_BoatID_Schedule">
+            <End Role="Boat" EntitySet="Boat" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookedEmployeeID" Association="Self.FK_BookedEmployeeID">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookedPackageID" Association="Self.FK_BookedPackageID">
+            <End Role="BookedPackage" EntitySet="BookedPackage" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetailsID_Hotel" Association="Self.FK_BookingDetailsID_Hotel">
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+            <End Role="PersonHotel" EntitySet="PersonHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetailsID_Rental" Association="Self.FK_BookingDetailsID_Rental">
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingID_Package" Association="Self.FK_BookingID_Package">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="BookedPackage" EntitySet="BookedPackage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingID_Payment" Association="Self.FK_BookingID_Payment">
+            <End Role="Booking" EntitySet="Booking" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationID" Association="Self.FK_CertificationID">
+            <End Role="Certification" EntitySet="Certification" />
+            <End Role="PersonCertification" EntitySet="PersonCertification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiveSiteID_DiveHistory" Association="Self.FK_DiveSiteID_DiveHistory">
+            <End Role="DiveSite" EntitySet="DiveSite" />
+            <End Role="DiveHistory" EntitySet="DiveHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiveSiteID_Schedule" Association="Self.FK_DiveSiteID_Schedule">
+            <End Role="DiveSite" EntitySet="DiveSite" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_EquipHistory" Association="Self.FK_EquipmentID_EquipHistory">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentHistory" EntitySet="EquipmentHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_EquipType" Association="Self.FK_EquipmentID_EquipType">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="EquipmentType" EntitySet="EquipmentType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_Rental" Association="Self.FK_EquipmentID_Rental">
+            <End Role="Equipment" EntitySet="Equipment" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelID" Association="Self.FK_HotelID">
+            <End Role="Hotel" EntitySet="Hotel" />
+            <End Role="PersonHotel" EntitySet="PersonHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodID" Association="Self.FK_MethodID">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageID" Association="Self.FK_PackageID">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="BookedPackage" EntitySet="BookedPackage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_BookingDetails" Association="Self.FK_PersonID_BookingDetails">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_Certification" Association="Self.FK_PersonID_Certification">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="PersonCertification" EntitySet="PersonCertification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_CommHistory" Association="Self.FK_PersonID_CommHistory">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="CommunicationHistory" EntitySet="CommunicationHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_DiveHistory" Association="Self.FK_PersonID_DiveHistory">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="DiveHistory" EntitySet="DiveHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_EmergencyContact" Association="Self.FK_PersonID_EmergencyContact">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="EmergencyContact" EntitySet="EmergencyContact" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AussieDiversDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Beach">
+          <Key>
+            <PropertyRef Name="BeachID" />
+          </Key>
+          <Property Name="BeachID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeachName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Hotels" Relationship="Self.FK_BeachID" FromRole="Beach" ToRole="Hotel" />
+        </EntityType>
+        <EntityType Name="Boat">
+          <Key>
+            <PropertyRef Name="BoatID" />
+          </Key>
+          <Property Name="BoatID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BoatCapacity" Type="Int16" Nullable="false" />
+          <Property Name="BoatType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_BoatID_BookingDetails" FromRole="Boat" ToRole="BookingDetails" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_BoatID_Schedule" FromRole="Boat" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="BookedPackage">
+          <Key>
+            <PropertyRef Name="BookedPackageID" />
+          </Key>
+          <Property Name="BookedPackageID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int16" Nullable="false" />
+          <Property Name="BookingID" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_BookedPackageID" FromRole="BookedPackage" ToRole="BookingDetails" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_BookingID_Package" FromRole="BookedPackage" ToRole="Booking" />
+          <NavigationProperty Name="Package" Relationship="Self.FK_PackageID" FromRole="BookedPackage" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BookingStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BookedPackages" Relationship="Self.FK_BookingID_Package" FromRole="Booking" ToRole="BookedPackage" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_BookingID_Payment" FromRole="Booking" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="BookingDetail">
+          <Key>
+            <PropertyRef Name="BookingDetailsID" />
+          </Key>
+          <Property Name="BookingDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookedPackageID" Type="Int16" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="BookedEmployeeID" Type="Int16" Nullable="false" />
+          <Property Name="BoatID" Type="Int16" Nullable="false" />
+          <Property Name="BD_DiveDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BD_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="BD_CustomerHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BD_PickupLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Boat" Relationship="Self.FK_BoatID_BookingDetails" FromRole="BookingDetails" ToRole="Boat" />
+          <NavigationProperty Name="BookedPackage" Relationship="Self.FK_BookedPackageID" FromRole="BookingDetails" ToRole="BookedPackage" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_BookedEmployeeID" FromRole="BookingDetails" ToRole="Employee" />
+          <NavigationProperty Name="PersonHotels" Relationship="Self.FK_BookingDetailsID_Hotel" FromRole="BookingDetails" ToRole="PersonHotel" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK_BookingDetailsID_Rental" FromRole="BookingDetails" ToRole="Rental" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonID_BookingDetails" FromRole="BookingDetails" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="CertificationID" />
+          </Key>
+          <Property Name="CertificationID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CertificationDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PersonCertifications" Relationship="Self.FK_CertificationID" FromRole="Certification" ToRole="PersonCertification" />
+        </EntityType>
+        <EntityType Name="CommunicationHistory">
+          <Key>
+            <PropertyRef Name="NoteID" />
+          </Key>
+          <Property Name="NoteID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="CH_Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CH_Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CH_Source" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="CH_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonID_CommHistory" FromRole="CommunicationHistory" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="DiveHistory">
+          <Key>
+            <PropertyRef Name="DiveHistoryID" />
+          </Key>
+          <Property Name="DiveHistoryID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiveSiteID" Type="Int16" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DiveSite" Relationship="Self.FK_DiveSiteID_DiveHistory" FromRole="DiveHistory" ToRole="DiveSite" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonID_DiveHistory" FromRole="DiveHistory" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="DiveSite">
+          <Key>
+            <PropertyRef Name="DiveSiteID" />
+          </Key>
+          <Property Name="DiveSiteID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DiveSiteLocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiveSiteDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DiveHistories" Relationship="Self.FK_DiveSiteID_DiveHistory" FromRole="DiveSite" ToRole="DiveHistory" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_DiveSiteID_Schedule" FromRole="DiveSite" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="EmergencyContact">
+          <Key>
+            <PropertyRef Name="EmergencyContactID" />
+          </Key>
+          <Property Name="EmergencyContactID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="EC_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EC_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EC_Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EC_PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EC_Relationship" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonID_EmergencyContact" FromRole="EmergencyContact" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeFirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeInstructorType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EmployeeCertificationLevel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_BookedEmployeeID" FromRole="Employee" ToRole="BookingDetails" />
+        </EntityType>
+        <EntityType Name="Equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EquipmentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentRentalCost" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EquipmentSize" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EquipmentHistories" Relationship="Self.FK_EquipmentID_EquipHistory" FromRole="Equipment" ToRole="EquipmentHistory" />
+          <NavigationProperty Name="EquipmentTypes" Relationship="Self.FK_EquipmentID_EquipType" FromRole="Equipment" ToRole="EquipmentType" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK_EquipmentID_Rental" FromRole="Equipment" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="EquipmentHistory">
+          <Key>
+            <PropertyRef Name="EquipmentHistoryID" />
+          </Key>
+          <Property Name="EquipmentHistoryID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentID" Type="Int16" Nullable="false" />
+          <Property Name="EH_RetailCost" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="EH_DatePurchased" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipmentID_EquipHistory" FromRole="EquipmentHistory" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="EquipmentType">
+          <Key>
+            <PropertyRef Name="EquipmentTypeID" />
+          </Key>
+          <Property Name="EquipmentTypeID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentID" Type="Int16" Nullable="false" />
+          <Property Name="EquipmentType1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipmentID_EquipType" FromRole="EquipmentType" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Hotel">
+          <Key>
+            <PropertyRef Name="HotelID" />
+          </Key>
+          <Property Name="HotelID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BeachID" Type="Int16" Nullable="false" />
+          <Property Name="HotelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelStreetAddress" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelCity" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelStateProvinceTerritory" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelCountry" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HotelPostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HotelDirections" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Beach" Relationship="Self.FK_BeachID" FromRole="Hotel" ToRole="Beach" />
+          <NavigationProperty Name="PersonHotels" Relationship="Self.FK_HotelID" FromRole="Hotel" ToRole="PersonHotel" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageID" />
+          </Key>
+          <Property Name="PackageID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PackageNumberOfDays" Type="Int16" Nullable="false" />
+          <Property Name="PackageCost" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <NavigationProperty Name="BookedPackages" Relationship="Self.FK_PackageID" FromRole="Package" ToRole="BookedPackage" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingID" Type="Int16" Nullable="false" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="PaymentBalance" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="MethodID" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Booking" Relationship="Self.FK_BookingID_Payment" FromRole="Payment" ToRole="Booking" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_MethodID" FromRole="Payment" ToRole="PaymentMethod" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="MethodID" />
+          </Key>
+          <Property Name="MethodID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PM_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PM_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_MethodID" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonDOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PersonLastDiveDate" Type="DateTime" Precision="0" />
+          <Property Name="PersonNumberOfDives" Type="Int16" />
+          <Property Name="PersonStreetAddress1" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonStreetAddress2" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="PersonCity" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonStateProvinceTerritory" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonCountry" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PersonPostalCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PersonPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PersonVegetarian" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="PersonAllergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="BookingDetails" Relationship="Self.FK_PersonID_BookingDetails" FromRole="Person" ToRole="BookingDetails" />
+          <NavigationProperty Name="CommunicationHistories" Relationship="Self.FK_PersonID_CommHistory" FromRole="Person" ToRole="CommunicationHistory" />
+          <NavigationProperty Name="DiveHistories" Relationship="Self.FK_PersonID_DiveHistory" FromRole="Person" ToRole="DiveHistory" />
+          <NavigationProperty Name="EmergencyContacts" Relationship="Self.FK_PersonID_EmergencyContact" FromRole="Person" ToRole="EmergencyContact" />
+          <NavigationProperty Name="PersonCertifications" Relationship="Self.FK_PersonID_Certification" FromRole="Person" ToRole="PersonCertification" />
+        </EntityType>
+        <EntityType Name="PersonCertification">
+          <Key>
+            <PropertyRef Name="PersonCertificationID" />
+          </Key>
+          <Property Name="PersonCertificationID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="CertificationID" Type="Int16" Nullable="false" />
+          <Property Name="PC_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PC_PADI_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Certification" Relationship="Self.FK_CertificationID" FromRole="PersonCertification" ToRole="Certification" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_PersonID_Certification" FromRole="PersonCertification" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="PersonHotel">
+          <Key>
+            <PropertyRef Name="PersonHotelID" />
+          </Key>
+          <Property Name="PersonHotelID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HotelID" Type="Int16" Nullable="false" />
+          <Property Name="BookingDetailsID" Type="Int32" Nullable="false" />
+          <Property Name="PH_RoomNumber" Type="Int16" />
+          <Property Name="PH_RoomPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="BookingDetail" Relationship="Self.FK_BookingDetailsID_Hotel" FromRole="PersonHotel" ToRole="BookingDetails" />
+          <NavigationProperty Name="Hotel" Relationship="Self.FK_HotelID" FromRole="PersonHotel" ToRole="Hotel" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="RentalID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EquipmentID" Type="Int16" Nullable="false" />
+          <Property Name="BookingDetailsID" Type="Int32" Nullable="false" />
+          <Property Name="RentalStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BookingDetail" Relationship="Self.FK_BookingDetailsID_Rental" FromRole="Rental" ToRole="BookingDetails" />
+          <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipmentID_Rental" FromRole="Rental" ToRole="Equipment" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+            <PropertyRef Name="BoatID" />
+            <PropertyRef Name="DiveSiteID" />
+            <PropertyRef Name="ScheduleDayOfWeek" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoatID" Type="Int16" Nullable="false" />
+          <Property Name="DiveSiteID" Type="Int16" Nullable="false" />
+          <Property Name="ScheduleDayOfWeek" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Boat" Relationship="Self.FK_BoatID_Schedule" FromRole="Schedule" ToRole="Boat" />
+          <NavigationProperty Name="DiveSite" Relationship="Self.FK_DiveSiteID_Schedule" FromRole="Schedule" ToRole="DiveSite" />
+        </EntityType>
+        <Association Name="FK_BeachID">
+          <End Role="Beach" Type="Self.Beach" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beach">
+              <PropertyRef Name="BeachID" />
+            </Principal>
+            <Dependent Role="Hotel">
+              <PropertyRef Name="BeachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BoatID_BookingDetails">
+          <End Role="Boat" Type="Self.Boat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boat">
+              <PropertyRef Name="BoatID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BoatID_Schedule">
+          <End Role="Boat" Type="Self.Boat" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boat">
+              <PropertyRef Name="BoatID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="BoatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookedPackageID">
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookedPackage">
+              <PropertyRef Name="BookedPackageID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookedPackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingID_Package">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="BookedPackage">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PackageID">
+          <End Role="Package" Type="Self.Package" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookedPackage" Type="Self.BookedPackage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="PackageID" />
+            </Principal>
+            <Dependent Role="BookedPackage">
+              <PropertyRef Name="PackageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingID_Payment">
+          <End Role="Booking" Type="Self.Booking" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="BookingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookedEmployeeID">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="BookedEmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetailsID_Hotel">
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonHotel" Type="Self.PersonHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDetails">
+              <PropertyRef Name="BookingDetailsID" />
+            </Principal>
+            <Dependent Role="PersonHotel">
+              <PropertyRef Name="BookingDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BookingDetailsID_Rental">
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookingDetails">
+              <PropertyRef Name="BookingDetailsID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="BookingDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_BookingDetails">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="BookingDetails" Type="Self.BookingDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="BookingDetails">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationID">
+          <End Role="Certification" Type="Self.Certification" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonCertification" Type="Self.PersonCertification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Certification">
+              <PropertyRef Name="CertificationID" />
+            </Principal>
+            <Dependent Role="PersonCertification">
+              <PropertyRef Name="CertificationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_CommHistory">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CommunicationHistory" Type="Self.CommunicationHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="CommunicationHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiveSiteID_DiveHistory">
+          <End Role="DiveSite" Type="Self.DiveSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiveHistory" Type="Self.DiveHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiveSite">
+              <PropertyRef Name="DiveSiteID" />
+            </Principal>
+            <Dependent Role="DiveHistory">
+              <PropertyRef Name="DiveSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_DiveHistory">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiveHistory" Type="Self.DiveHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="DiveHistory">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiveSiteID_Schedule">
+          <End Role="DiveSite" Type="Self.DiveSite" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiveSite">
+              <PropertyRef Name="DiveSiteID" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="DiveSiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_EmergencyContact">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmergencyContact" Type="Self.EmergencyContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="EmergencyContact">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_EquipHistory">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentHistory" Type="Self.EquipmentHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="EquipmentHistory">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_EquipType">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="EquipmentType">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EquipmentID_Rental">
+          <End Role="Equipment" Type="Self.Equipment" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipment">
+              <PropertyRef Name="EquipmentID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="EquipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HotelID">
+          <End Role="Hotel" Type="Self.Hotel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonHotel" Type="Self.PersonHotel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hotel">
+              <PropertyRef Name="HotelID" />
+            </Principal>
+            <Dependent Role="PersonHotel">
+              <PropertyRef Name="HotelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MethodID">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="MethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="MethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonID_Certification">
+          <End Role="Person" Type="Self.Person" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonCertification" Type="Self.PersonCertification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PersonCertification">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AussieDiversEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Beaches" EntityType="Self.Beach" />
+          <EntitySet Name="Boats" EntityType="Self.Boat" />
+          <EntitySet Name="BookedPackages" EntityType="Self.BookedPackage" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="BookingDetails" EntityType="Self.BookingDetail" />
+          <EntitySet Name="Certifications" EntityType="Self.Certification" />
+          <EntitySet Name="CommunicationHistories" EntityType="Self.CommunicationHistory" />
+          <EntitySet Name="DiveHistories" EntityType="Self.DiveHistory" />
+          <EntitySet Name="DiveSites" EntityType="Self.DiveSite" />
+          <EntitySet Name="EmergencyContacts" EntityType="Self.EmergencyContact" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+          <EntitySet Name="EquipmentHistories" EntityType="Self.EquipmentHistory" />
+          <EntitySet Name="EquipmentTypes" EntityType="Self.EquipmentType" />
+          <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="PersonCertifications" EntityType="Self.PersonCertification" />
+          <EntitySet Name="PersonHotels" EntityType="Self.PersonHotel" />
+          <EntitySet Name="Rentals" EntityType="Self.Rental" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <AssociationSet Name="FK_BeachID" Association="Self.FK_BeachID">
+            <End Role="Beach" EntitySet="Beaches" />
+            <End Role="Hotel" EntitySet="Hotels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BoatID_BookingDetails" Association="Self.FK_BoatID_BookingDetails">
+            <End Role="Boat" EntitySet="Boats" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BoatID_Schedule" Association="Self.FK_BoatID_Schedule">
+            <End Role="Boat" EntitySet="Boats" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookedPackageID" Association="Self.FK_BookedPackageID">
+            <End Role="BookedPackage" EntitySet="BookedPackages" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingID_Package" Association="Self.FK_BookingID_Package">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="BookedPackage" EntitySet="BookedPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PackageID" Association="Self.FK_PackageID">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="BookedPackage" EntitySet="BookedPackages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingID_Payment" Association="Self.FK_BookingID_Payment">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookedEmployeeID" Association="Self.FK_BookedEmployeeID">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetailsID_Hotel" Association="Self.FK_BookingDetailsID_Hotel">
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+            <End Role="PersonHotel" EntitySet="PersonHotels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BookingDetailsID_Rental" Association="Self.FK_BookingDetailsID_Rental">
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_BookingDetails" Association="Self.FK_PersonID_BookingDetails">
+            <End Role="Person" EntitySet="People" />
+            <End Role="BookingDetails" EntitySet="BookingDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationID" Association="Self.FK_CertificationID">
+            <End Role="Certification" EntitySet="Certifications" />
+            <End Role="PersonCertification" EntitySet="PersonCertifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_CommHistory" Association="Self.FK_PersonID_CommHistory">
+            <End Role="Person" EntitySet="People" />
+            <End Role="CommunicationHistory" EntitySet="CommunicationHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiveSiteID_DiveHistory" Association="Self.FK_DiveSiteID_DiveHistory">
+            <End Role="DiveSite" EntitySet="DiveSites" />
+            <End Role="DiveHistory" EntitySet="DiveHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_DiveHistory" Association="Self.FK_PersonID_DiveHistory">
+            <End Role="Person" EntitySet="People" />
+            <End Role="DiveHistory" EntitySet="DiveHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiveSiteID_Schedule" Association="Self.FK_DiveSiteID_Schedule">
+            <End Role="DiveSite" EntitySet="DiveSites" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_EmergencyContact" Association="Self.FK_PersonID_EmergencyContact">
+            <End Role="Person" EntitySet="People" />
+            <End Role="EmergencyContact" EntitySet="EmergencyContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_EquipHistory" Association="Self.FK_EquipmentID_EquipHistory">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="EquipmentHistory" EntitySet="EquipmentHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_EquipType" Association="Self.FK_EquipmentID_EquipType">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="EquipmentType" EntitySet="EquipmentTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EquipmentID_Rental" Association="Self.FK_EquipmentID_Rental">
+            <End Role="Equipment" EntitySet="Equipments" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HotelID" Association="Self.FK_HotelID">
+            <End Role="Hotel" EntitySet="Hotels" />
+            <End Role="PersonHotel" EntitySet="PersonHotels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MethodID" Association="Self.FK_MethodID">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonID_Certification" Association="Self.FK_PersonID_Certification">
+            <End Role="Person" EntitySet="People" />
+            <End Role="PersonCertification" EntitySet="PersonCertifications" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AussieDiversDataModelStoreContainer" CdmEntityContainer="AussieDiversEntities">
+          <EntitySetMapping Name="Beaches">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Beach">
+              <MappingFragment StoreEntitySet="Beach">
+                <ScalarProperty Name="BeachID" ColumnName="BeachID" />
+                <ScalarProperty Name="BeachName" ColumnName="BeachName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boats">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Boat">
+              <MappingFragment StoreEntitySet="Boat">
+                <ScalarProperty Name="BoatID" ColumnName="BoatID" />
+                <ScalarProperty Name="BoatName" ColumnName="BoatName" />
+                <ScalarProperty Name="BoatCapacity" ColumnName="BoatCapacity" />
+                <ScalarProperty Name="BoatType" ColumnName="BoatType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookedPackages">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.BookedPackage">
+              <MappingFragment StoreEntitySet="BookedPackage">
+                <ScalarProperty Name="BookedPackageID" ColumnName="BookedPackageID" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="BookingStatus" ColumnName="BookingStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookingDetails">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.BookingDetail">
+              <MappingFragment StoreEntitySet="BookingDetails">
+                <ScalarProperty Name="BookingDetailsID" ColumnName="BookingDetailsID" />
+                <ScalarProperty Name="BookedPackageID" ColumnName="BookedPackageID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="BookedEmployeeID" ColumnName="BookedEmployeeID" />
+                <ScalarProperty Name="BoatID" ColumnName="BoatID" />
+                <ScalarProperty Name="BD_DiveDate" ColumnName="BD_DiveDate" />
+                <ScalarProperty Name="BD_Status" ColumnName="BD_Status" />
+                <ScalarProperty Name="BD_CustomerHotel" ColumnName="BD_CustomerHotel" />
+                <ScalarProperty Name="BD_PickupLocation" ColumnName="BD_PickupLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certifications">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Certification">
+              <MappingFragment StoreEntitySet="Certification">
+                <ScalarProperty Name="CertificationID" ColumnName="CertificationID" />
+                <ScalarProperty Name="CertificationName" ColumnName="CertificationName" />
+                <ScalarProperty Name="CertificationDescription" ColumnName="CertificationDescription" />
+                <ScalarProperty Name="CertificationLevel" ColumnName="CertificationLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommunicationHistories">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.CommunicationHistory">
+              <MappingFragment StoreEntitySet="CommunicationHistory">
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="CH_Comment" ColumnName="CH_Comment" />
+                <ScalarProperty Name="CH_Status" ColumnName="CH_Status" />
+                <ScalarProperty Name="CH_Source" ColumnName="CH_Source" />
+                <ScalarProperty Name="CH_Date" ColumnName="CH_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiveHistories">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.DiveHistory">
+              <MappingFragment StoreEntitySet="DiveHistory">
+                <ScalarProperty Name="DiveHistoryID" ColumnName="DiveHistoryID" />
+                <ScalarProperty Name="DiveSiteID" ColumnName="DiveSiteID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiveSites">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.DiveSite">
+              <MappingFragment StoreEntitySet="DiveSite">
+                <ScalarProperty Name="DiveSiteID" ColumnName="DiveSiteID" />
+                <ScalarProperty Name="DiveSiteLocationName" ColumnName="DiveSiteLocationName" />
+                <ScalarProperty Name="DiveSiteDescription" ColumnName="DiveSiteDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmergencyContacts">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.EmergencyContact">
+              <MappingFragment StoreEntitySet="EmergencyContact">
+                <ScalarProperty Name="EmergencyContactID" ColumnName="EmergencyContactID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="EC_FirstName" ColumnName="EC_FirstName" />
+                <ScalarProperty Name="EC_LastName" ColumnName="EC_LastName" />
+                <ScalarProperty Name="EC_Country" ColumnName="EC_Country" />
+                <ScalarProperty Name="EC_PhoneNumber" ColumnName="EC_PhoneNumber" />
+                <ScalarProperty Name="EC_Relationship" ColumnName="EC_Relationship" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="EmployeeFirstName" ColumnName="EmployeeFirstName" />
+                <ScalarProperty Name="EmployeeLastName" ColumnName="EmployeeLastName" />
+                <ScalarProperty Name="EmployeeInstructorType" ColumnName="EmployeeInstructorType" />
+                <ScalarProperty Name="EmployeeCertificationLevel" ColumnName="EmployeeCertificationLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipments">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Equipment">
+              <MappingFragment StoreEntitySet="Equipment">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+                <ScalarProperty Name="EquipmentDescription" ColumnName="EquipmentDescription" />
+                <ScalarProperty Name="EquipmentRentalCost" ColumnName="EquipmentRentalCost" />
+                <ScalarProperty Name="EquipmentSize" ColumnName="EquipmentSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentHistories">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.EquipmentHistory">
+              <MappingFragment StoreEntitySet="EquipmentHistory">
+                <ScalarProperty Name="EquipmentHistoryID" ColumnName="EquipmentHistoryID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EH_RetailCost" ColumnName="EH_RetailCost" />
+                <ScalarProperty Name="EH_DatePurchased" ColumnName="EH_DatePurchased" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EquipmentTypes">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.EquipmentType">
+              <MappingFragment StoreEntitySet="EquipmentType">
+                <ScalarProperty Name="EquipmentTypeID" ColumnName="EquipmentTypeID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentType1" ColumnName="EquipmentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hotels">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Hotel">
+              <MappingFragment StoreEntitySet="Hotel">
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="BeachID" ColumnName="BeachID" />
+                <ScalarProperty Name="HotelName" ColumnName="HotelName" />
+                <ScalarProperty Name="HotelStreetAddress" ColumnName="HotelStreetAddress" />
+                <ScalarProperty Name="HotelCity" ColumnName="HotelCity" />
+                <ScalarProperty Name="HotelStateProvinceTerritory" ColumnName="HotelStateProvinceTerritory" />
+                <ScalarProperty Name="HotelCountry" ColumnName="HotelCountry" />
+                <ScalarProperty Name="HotelPostalCode" ColumnName="HotelPostalCode" />
+                <ScalarProperty Name="HotelPhoneNumber" ColumnName="HotelPhoneNumber" />
+                <ScalarProperty Name="HotelDirections" ColumnName="HotelDirections" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="PackageNumberOfDays" ColumnName="PackageNumberOfDays" />
+                <ScalarProperty Name="PackageCost" ColumnName="PackageCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentBalance" ColumnName="PaymentBalance" />
+                <ScalarProperty Name="MethodID" ColumnName="MethodID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="MethodID" ColumnName="MethodID" />
+                <ScalarProperty Name="PM_Name" ColumnName="PM_Name" />
+                <ScalarProperty Name="PM_Description" ColumnName="PM_Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="PersonFirstName" ColumnName="PersonFirstName" />
+                <ScalarProperty Name="PersonLastName" ColumnName="PersonLastName" />
+                <ScalarProperty Name="PersonEmail" ColumnName="PersonEmail" />
+                <ScalarProperty Name="PersonDOB" ColumnName="PersonDOB" />
+                <ScalarProperty Name="PersonLastDiveDate" ColumnName="PersonLastDiveDate" />
+                <ScalarProperty Name="PersonNumberOfDives" ColumnName="PersonNumberOfDives" />
+                <ScalarProperty Name="PersonStreetAddress1" ColumnName="PersonStreetAddress1" />
+                <ScalarProperty Name="PersonStreetAddress2" ColumnName="PersonStreetAddress2" />
+                <ScalarProperty Name="PersonCity" ColumnName="PersonCity" />
+                <ScalarProperty Name="PersonStateProvinceTerritory" ColumnName="PersonStateProvinceTerritory" />
+                <ScalarProperty Name="PersonCountry" ColumnName="PersonCountry" />
+                <ScalarProperty Name="PersonPostalCode" ColumnName="PersonPostalCode" />
+                <ScalarProperty Name="PersonPhone" ColumnName="PersonPhone" />
+                <ScalarProperty Name="PersonVegetarian" ColumnName="PersonVegetarian" />
+                <ScalarProperty Name="PersonAllergies" ColumnName="PersonAllergies" />
+                <ScalarProperty Name="PersonPhoto" ColumnName="PersonPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonCertifications">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.PersonCertification">
+              <MappingFragment StoreEntitySet="PersonCertification">
+                <ScalarProperty Name="PersonCertificationID" ColumnName="PersonCertificationID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="CertificationID" ColumnName="CertificationID" />
+                <ScalarProperty Name="PC_Date" ColumnName="PC_Date" />
+                <ScalarProperty Name="PC_PADI_ID" ColumnName="PC_PADI_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonHotels">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.PersonHotel">
+              <MappingFragment StoreEntitySet="PersonHotel">
+                <ScalarProperty Name="PersonHotelID" ColumnName="PersonHotelID" />
+                <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+                <ScalarProperty Name="BookingDetailsID" ColumnName="BookingDetailsID" />
+                <ScalarProperty Name="PH_RoomNumber" ColumnName="PH_RoomNumber" />
+                <ScalarProperty Name="PH_RoomPhone" ColumnName="PH_RoomPhone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentals">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Rental">
+              <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="BookingDetailsID" ColumnName="BookingDetailsID" />
+                <ScalarProperty Name="RentalStatus" ColumnName="RentalStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="AussieDiversDataModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="BoatID" ColumnName="BoatID" />
+                <ScalarProperty Name="DiveSiteID" ColumnName="DiveSiteID" />
+                <ScalarProperty Name="ScheduleDayOfWeek" ColumnName="ScheduleDayOfWeek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
