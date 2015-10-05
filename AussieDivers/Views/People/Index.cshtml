@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Customers</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,45 +20,6 @@
         <th>
             @Html.DisplayNameFor(model => model.PersonEmail)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonDOB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonLastDiveDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonNumberOfDives)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonStreetAddress1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonStreetAddress2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonCity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonStateProvinceTerritory)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonCountry)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonPostalCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonVegetarian)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonAllergies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonPhoto)
-        </th>
         <th></th>
     </tr>
 
@@ -72,45 +33,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PersonEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonDOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonLastDiveDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonNumberOfDives)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonStreetAddress1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonStreetAddress2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonCity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonStateProvinceTerritory)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonCountry)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonPostalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonVegetarian)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonAllergies)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonPhoto)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PersonID }) |

@@ -21,7 +21,7 @@ namespace TestMVCSite.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AussieDivers", throwIfV1Schema: false)
         {
         }
 

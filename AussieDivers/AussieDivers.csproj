@@ -164,103 +164,69 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AussieDiversModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AussieDiversModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AussieDiversModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AussieDiversModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AussieDiversModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Beach.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Boat.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookedPackage.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Booking.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\BookingDetail.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Certification.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CommunicationHistory.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DiveHistory.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DiveSite.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EmergencyContact.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Employee.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Equipment.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EquipmentHistory.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EquipmentType.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Hotel.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\AussieDiversContext.cs" />
+    <Compile Include="Models\DataModels\Beach.cs" />
+    <Compile Include="Models\DataModels\Boat.cs" />
+    <Compile Include="Models\DataModels\BookedPackage.cs" />
+    <Compile Include="Models\DataModels\Booking.cs" />
+    <Compile Include="Models\DataModels\BookingDetail.cs" />
+    <Compile Include="Models\DataModels\Certification.cs" />
+    <Compile Include="Models\DataModels\CommunicationHistory.cs" />
+    <Compile Include="Models\DataModels\DiveHistory.cs" />
+    <Compile Include="Models\DataModels\DiveSite.cs" />
+    <Compile Include="Models\DataModels\EmergencyContact.cs" />
+    <Compile Include="Models\DataModels\Employee.cs" />
+    <Compile Include="Models\DataModels\Equipment.cs" />
+    <Compile Include="Models\DataModels\EquipmentHistory.cs" />
+    <Compile Include="Models\DataModels\EquipmentType.cs" />
+    <Compile Include="Models\DataModels\Hotel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Package.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Payment.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PaymentMethod.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Person.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PersonCertification.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\PersonHotel.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Rental.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Schedule.cs">
-      <DependentUpon>AussieDiversModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\DataModels\Mapping\BeachMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\BoatMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\BookedPackageMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\BookingDetailMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\BookingMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\CertificationMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\CommunicationHistoryMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\DiveHistoryMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\DiveSiteMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\EmergencyContactMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\EmployeeMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\EquipmentHistoryMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\EquipmentMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\EquipmentTypeMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\HotelMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PackageMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PaymentMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PaymentMethodMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PersonCertificationMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PersonHotelMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\PersonMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\RentalMap.cs" />
+    <Compile Include="Models\DataModels\Mapping\ScheduleMap.cs" />
+    <Compile Include="Models\DataModels\Package.cs" />
+    <Compile Include="Models\DataModels\Payment.cs" />
+    <Compile Include="Models\DataModels\PaymentMethod.cs" />
+    <Compile Include="Models\DataModels\Person.cs" />
+    <Compile Include="Models\DataModels\PersonCertification.cs" />
+    <Compile Include="Models\DataModels\PersonHotel.cs" />
+    <Compile Include="Models\DataModels\Rental.cs" />
+    <Compile Include="Models\DataModels\Schedule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AussieDiversDevDB.mdf" />
+    <Content Include="App_Data\AussieDiversDevDB_log.ldf">
+      <DependentUpon>AussieDiversDevDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\SiteNoSideNav.css" />
@@ -268,23 +234,6 @@
     <Content Include="Content\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\AussieDiversModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AussieDiversModel.edmx</DependentUpon>
-      <LastGenOutput>AussieDiversModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\AussieDiversModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AussieDiversModel.edmx</DependentUpon>
-      <LastGenOutput>AussieDiversModel.cs</LastGenOutput>
-    </Content>
-    <EntityDeploy Include="Models\AussieDiversModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AussieDiversModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\AussieDiversModel.edmx.diagram">
-      <DependentUpon>AussieDiversModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Fonts\glyphicons-halflings-regular.woff" />
@@ -343,12 +292,9 @@
     <Content Include="Views\People\Edit.cshtml" />
     <Content Include="Views\People\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
-    <Content Include="Views\Inventory\Index.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
