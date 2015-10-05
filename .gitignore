@@ -4,6 +4,9 @@
 # Ignore connectionStrings.config
 connectionStrings.config
 
+# Ignore Web.config
+Web.config
+
 # User-specific files
 *.suo
 *.user
