@@ -26,9 +26,17 @@ namespace TestMVCSite
             bundles.Add(new ScriptBundle("~/bundles/offcanvas").Include(
                 "~/Scripts/offcanvas.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/home").Include(
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/respond.js",
+                        "~/Scripts/offcanvas.js",
+                        "~/Scripts/gridmvc.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Gridmvc.css"));
         }
     }
 }
