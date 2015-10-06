@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace TestMVCSite.Models.Mapping
+namespace AussieDivers.Models.Mapping
 {
     public class PackageMap : EntityTypeConfiguration<Package>
     {

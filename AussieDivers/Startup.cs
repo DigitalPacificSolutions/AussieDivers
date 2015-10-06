@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(TestMVCSite.Startup))]
-namespace TestMVCSite
+[assembly: OwinStartupAttribute(typeof(AussieDivers.Startup))]
+namespace AussieDivers
 {
     public partial class Startup
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TestMVCSite.Models
+namespace AussieDivers.Models
 {
     public partial class Person
     {

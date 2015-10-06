@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TestMVCSite.Models;
+using AussieDivers.Models;
 
-namespace TestMVCSite.Controllers
+namespace AussieDivers.Controllers
 {
     public class PeopleController : Controller
     {

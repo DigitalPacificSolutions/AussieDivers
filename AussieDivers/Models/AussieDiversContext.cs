@@ -1,8 +1,8 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using TestMVCSite.Models.Mapping;
+using AussieDivers.Models.Mapping;
 
-namespace TestMVCSite.Models
+namespace AussieDivers.Models
 {
     public partial class AussieDiversContext : DbContext
     {

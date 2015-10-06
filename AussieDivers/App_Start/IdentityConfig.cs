@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using TestMVCSite.Models;
+using AussieDivers.Models;
 
-namespace TestMVCSite
+namespace AussieDivers
 {
     public class EmailService : IIdentityMessageService
     {

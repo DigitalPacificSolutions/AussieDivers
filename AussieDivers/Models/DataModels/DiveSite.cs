@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TestMVCSite.Models
+namespace AussieDivers.Models
 {
     public partial class DiveSite
     {
