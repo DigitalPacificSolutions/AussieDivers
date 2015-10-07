@@ -17,7 +17,7 @@ namespace AussieDivers.Controllers
         // GET: People
         public ActionResult Index()
         {
-            return View();
+            return View(db.People.ToList());
         }
 
         // GET: People/Details/5
