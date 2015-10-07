@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles {
+    <link rel='stylesheet' href='~/Content/fullcalendar.css' />
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/calendar")
+
+    <script>
+        $(document).ready(function () {
+
+            // page is now ready, initialize the calendar...
+
+            $('#calendar').fullCalendar({
+                events: [
+                    {
+                        title: 'Something',
+                        start: '2015-10-12',
+                        end: '2015-10-15',
+                        allDay: true,
+                        url: 'https://google.com'
+                    }
+                ]
+            });
+
+        });
+    </script>
+}
+
+<div id="calendar"></div>
+
+

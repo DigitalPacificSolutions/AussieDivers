@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace TestMVCSite
+namespace AussieDivers
 {
     public class RouteConfig
     {
@@ -15,6 +15,12 @@ namespace TestMVCSite
 
             routes.MapRoute(
                 name: "Default",
+                url: "",
+                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "ControllerAction",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );

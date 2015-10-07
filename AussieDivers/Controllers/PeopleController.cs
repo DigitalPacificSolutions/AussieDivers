@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using TestMVCSite.Models;
+using AussieDivers.Models;
 
-namespace TestMVCSite.Controllers
+namespace AussieDivers.Controllers
 {
     public class PeopleController : Controller
     {
-        private AussieDiversEntities db = new AussieDiversEntities();
+        private AussieDiversContext db = new AussieDiversContext();
 
         // GET: People
         public ActionResult Index()
@@ -48,6 +48,7 @@ namespace TestMVCSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PersonID,PersonFirstName,PersonLastName,PersonEmail,PersonDOB,PersonLastDiveDate,PersonNumberOfDives,PersonStreetAddress1,PersonStreetAddress2,PersonCity,PersonStateProvinceTerritory,PersonCountry,PersonPostalCode,PersonPhone,PersonVegetarian,PersonAllergies,PersonPhoto")] Person person)
         {
+            person.PersonLastUpdated = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.People.Add(person);

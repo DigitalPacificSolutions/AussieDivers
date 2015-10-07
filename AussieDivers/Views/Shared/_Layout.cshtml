@@ -8,6 +8,7 @@
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
 
 </head>
 <body>
@@ -27,7 +28,7 @@
                     <a class="virtual" href="/calendar"><i class="glyphicon glyphicon-calendar"></i> Calendar</a>
                 </li>
                 <li>
-                    <a class="virtual" href="/customers"><i class="glyphicon glyphicon-user"></i> Customers</a>
+                    <a class="virtual" href="/people"><i class="glyphicon glyphicon-user"></i> Customers</a>
                 </li>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-book"></i> Bookings</a>
@@ -44,52 +45,48 @@
 
         <!-- Page Content -->
         <div class="page-content-wrapper">
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="navbar navbar-default">
-                        <div class="container">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                @Html.ActionLink("Aussie Divers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                            </div>
-                            <div class="navbar-collapse collapse">
-                                <ul class="nav navbar-nav">
-                                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                                </ul>
-                                @Html.Partial("_LoginPartial")
-                            </div>
+                        <a href="#menu-toggle" id="menu-toggle" class="btn btn-default pull-left"
+                           style="border-color: transparent; margin-top: .4em; margin-left:.4em">
+                            <i class="glyphicon glyphicon-menu-hamburger"></i>
+                        </a>
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("Aussie Divers", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li>@Html.ActionLink("About", "About", "Home")</li>
+                                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                            @Html.Partial("_LoginPartial")
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-xs-12" style="padding:5px">
-                        <a href="#menu-toggle" id="menu-toggle" class="btn btn-default"
-                           style="border-color: transparent">
-                            <i class="glyphicon glyphicon-menu-hamburger"></i>
-                        </a>
-                    </div>
+            <div class="inner-page-content">
+                <div class="container-fluid">
+
+                    @RenderBody()
+                
                 </div>
-
-                @RenderBody()
-
             </div>
         </div>
         <!-- End Page Content -->
     </div>                                  
    
-    
-    
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/offcanvas")
+    @Scripts.Render("~/bundles/layout")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
