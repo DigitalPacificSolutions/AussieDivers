@@ -26,14 +26,18 @@ namespace AussieDivers
             bundles.Add(new ScriptBundle("~/bundles/offcanvas").Include(
                 "~/Scripts/offcanvas.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/home").Include(
+            bundles.Add(new ScriptBundle("~/bundles/layout").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.min.js",
                         "~/Scripts/respond.js",
                         "~/Scripts/offcanvas.js",
                         "~/Scripts/gridmvc.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new ScriptBundle("~/bundles/calendar").Include(
+                "~/Scripts/moment.min.js",
+                "~/Scripts/fullcalendar.min.js"));
+
+               bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/Gridmvc.css"));
