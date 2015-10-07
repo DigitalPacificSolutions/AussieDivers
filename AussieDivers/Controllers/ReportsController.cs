@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AussieDivers.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,11 +9,11 @@ namespace TestMVCSite.Controllers
 {
     public class ReportsController : Controller
     {
-        // private AussieDiversContext db = new AussieDiversContext();
+        private AussieDiversContext db = new AussieDiversContext();
         // GET: Reports
         public ActionResult Index()
         {
-            return View();
+            return View(db.People.ToList());
         }
     }
 }

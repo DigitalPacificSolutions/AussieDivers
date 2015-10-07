@@ -1,25 +1,14 @@
-﻿
+﻿@model IEnumerable<AussieDivers.Models.Person>
+
+@using GridMvc.Html;
 @{
     ViewBag.Title = "Reports";
 }
 
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script>
-    
-    // add pointer to home page
-  $(document).ready(function() {
-      $('#reportsTable tr:first').css('font-weight', 'bold');
-  });
+    <h2>Reports</h2>
 
-</script>
-
-<h2>Reports</h2>
-
-<body>
-    <table id="reportsTable" class="table">
-        <tr>
-            <td>First Name</td>
-            <td>Last Name</td>
-        </tr>
-    </table>
-</body>
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(person => person.PersonFirstName).Titled("First Name").Sortable(true);
+    columns.Add(person => person.PersonLastName).Titled("Last Name").Sortable(true);
+})
