@@ -48,8 +48,14 @@ textarea {
 
 .page-content-wrapper {
     margin-left: 250px;
-    padding: .2em;
     transition: all 0.5s ease;
+    overflow-x: hidden;
+}
+
+.inner-page-content {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 1em;
 }
 
 .sidebar-wrapper.toggled + .page-content-wrapper {

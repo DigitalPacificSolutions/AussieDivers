@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TestMVCSite.Models;
+using AussieDivers.Models;
 
-namespace TestMVCSite.Controllers
+namespace AussieDivers.Controllers
 {
     [Authorize]
     public class AccountController : Controller

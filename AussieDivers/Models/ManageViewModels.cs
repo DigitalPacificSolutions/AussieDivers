@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace TestMVCSite.Models
+namespace AussieDivers.Models
 {
     public class IndexViewModel
     {
