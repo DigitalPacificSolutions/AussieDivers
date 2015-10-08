@@ -232,6 +232,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AussieDivers.mdf" />
+    <Content Include="App_Data\AussieDivers_log.ldf">
+      <DependentUpon>AussieDivers.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
@@ -403,9 +407,7 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\ContactFollowUp\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

@@ -10,6 +10,7 @@ using AussieDivers.Models;
 
 namespace AussieDivers.Controllers
 {
+    [Authorize]
     public class PeopleController : Controller
     {
         private AussieDiversContext db = new AussieDiversContext();

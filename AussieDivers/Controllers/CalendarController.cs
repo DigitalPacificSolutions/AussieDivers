@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AussieDivers.Controllers
 {
+    [Authorize]
     public class CalendarController : Controller
     {
         // GET: Calendar

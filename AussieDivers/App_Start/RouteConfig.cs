@@ -16,7 +16,7 @@ namespace AussieDivers
             routes.MapRoute(
                 name: "Default",
                 url: "",
-                defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

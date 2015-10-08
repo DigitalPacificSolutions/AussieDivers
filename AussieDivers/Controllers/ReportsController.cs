@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace TestMVCSite.Controllers
 {
+    [Authorize]
     public class ReportsController : Controller
     {
         private AussieDiversContext db = new AussieDiversContext();

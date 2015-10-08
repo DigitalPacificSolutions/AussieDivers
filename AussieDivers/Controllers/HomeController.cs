@@ -6,11 +6,20 @@ using System.Web.Mvc;
 
 namespace AussieDivers.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("/Account/Login");
+            }
         }
 
         public ActionResult About()
