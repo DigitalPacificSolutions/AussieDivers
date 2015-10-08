@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AussieDivers.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,12 +10,13 @@ namespace AussieDivers.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private AussieDiversContext db = new AussieDiversContext();
         [AllowAnonymous]
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
             {
-                return View();
+                return View(db.People.ToList());
             }
             else
             {

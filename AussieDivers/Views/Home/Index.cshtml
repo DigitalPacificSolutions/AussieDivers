@@ -1,6 +1,10 @@
-﻿@{
+﻿
+@model IEnumerable<AussieDivers.Models.Person>
+@using GridMvc.Html;
+@{
     ViewBag.Title = "Home Page";
-}
+ }
+
 
 <head>
     <style>
@@ -32,3 +36,9 @@
 <div class="column">
     <h3>Upcoming Schedule</h3>
 </div>
+
+@Html.Grid(Model).Columns(columns =>
+{
+    columns.Add(person => person.PersonFirstName).Titled("First Name").Sortable(true);
+    columns.Add(person => person.PersonLastName).Titled("Last Name").Sortable(true);
+})
